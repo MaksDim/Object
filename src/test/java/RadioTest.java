@@ -13,6 +13,7 @@ class RadioTest {
         assertEquals(expected, station.getCurrentStation());
     }
 
+
     @Test
     void setCurrentStationUnderMax() {
         Radio station = new Radio();
@@ -164,4 +165,76 @@ class RadioTest {
 
         assertEquals(expected, volume.getCurrentVolume());
     }
+
+    @Test
+    void pushNextRadioStation() {
+        Radio station = new Radio();
+        station.setCurrentStation(9);
+        station.nextStation();
+
+        int expected = 0;
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
+    @Test
+    void pushDoubleNextRadioStation() {
+        Radio station = new Radio();
+        station.setCurrentStation(9);
+        station.nextStation();
+        station.nextStation();
+
+        int expected = 1;
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
+    @Test
+    void pushNextRadioStation2() {
+        Radio station = new Radio();
+        station.setCurrentStation(9);
+        station.nextStation();
+
+        int expected = 0;
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
+    @Test
+    void pushDoubleNextRadioStation2() {
+        Radio station = new Radio();
+        station.setCurrentStation(9);
+        station.nextStation();
+        station.nextStation();
+
+        int expected = 1;
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
+    @Test
+    void pushPrevRadioStation() {
+        Radio station = new Radio();
+        station.setCurrentStation(0);
+        station.prevStation();
+
+
+        int expected = 9;
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
+    @Test
+    void pushDoublePrevRadioStation() {
+        Radio station = new Radio();
+        station.setCurrentStation(2);
+        station.prevStation();
+        station.prevStation();
+
+
+        int expected = 0;
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
 }
