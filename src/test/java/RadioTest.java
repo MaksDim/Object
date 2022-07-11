@@ -18,7 +18,7 @@ class RadioTest {
     void setCurrentStationUnderMax() {
         Radio station = new Radio();
         int expected = 0;
-        station.setCurrentStation(10);
+        station.setCurrentStation(15);
 
         assertEquals(expected, station.getCurrentStation());
     }
@@ -45,7 +45,7 @@ class RadioTest {
     void setCurrentVolumeUnderMax() {
         Radio volume = new Radio();
         int expected = 0;
-        volume.setCurrentVolume(11);
+        volume.setCurrentVolume(101);
 
         assertEquals(expected, volume.getCurrentVolume());
     }
@@ -83,16 +83,15 @@ class RadioTest {
 
     @Test
     void shouldNextStation() {
-        Radio station = new Radio();
-        station.setCurrentStation(8);
+        Radio station = new Radio(5);
+        station.setCurrentStation(4);
         station.nextStation();
 
-        int expected = 9;
+        int expected = 0;
 
         assertEquals(expected, station.getCurrentStation());
 
     }
-
 
 
     @Test
@@ -118,14 +117,13 @@ class RadioTest {
     }
 
 
-
     @Test
     void shouldBoundaryPlusVolume() {
         Radio volume = new Radio();
-        volume.setCurrentVolume(10);
+        volume.setCurrentVolume(100);
         volume.increasePlusVolume();
 
-        int expected = 10;
+        int expected = 100;
 
         assertEquals(expected, volume.getCurrentVolume());
 
@@ -236,5 +234,21 @@ class RadioTest {
 
         assertEquals(expected, station.getCurrentStation());
     }
+
+
+    @Test
+    void shouldCreateRadioWithStationCount() {
+        Radio station = new Radio(5);
+        station.setCurrentStation(4);
+        station.prevStation();
+        station.prevStation();
+
+        int expected = 2;
+
+
+        assertEquals(expected, station.getCurrentStation());
+    }
+
+
 
 }
